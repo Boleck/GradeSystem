@@ -1,1 +1,3 @@
 "# GradeSystem" 
+"*.class" 
+"# GradeSystem" 
