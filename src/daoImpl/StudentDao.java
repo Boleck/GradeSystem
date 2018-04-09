@@ -18,30 +18,31 @@ public class StudentDao implements IStudentDao, ResultSetProcessor<StudentEntity
 
     @Override
     public List<StudentEntity> getStudentsByGroupId(int groupId) {
-        return null;
+        return connectionManager.getAll("SELECT * FROM student WHERE group_id = ?",this, new Object[]{ groupId });
     }
 
     @Override
     public StudentEntity getStudentById(int studentId) {
-        return null;
+        return connectionManager.getFirst("SELECT * FROM student WHERE id = ?",this, new Object[]{ studentId });
     }
 
     @Override
     public void deleteStudent(int studentId) {
-
+        connectionManager.delete("DELETE FROM student WHERE id = ?", new Object[] { studentId });
     }
 
     @Override
-    public void updateStudent(StudentEntity student) {
-
+    public void addStudent(StudentEntity student) {
+        connectionManager.saveOrUpdate("INSERT INTO student (name, group_id) values (?, ?)", new Object[] {
+        student.getFullName(), student.getGroupId() });
     }
 
     @Override
     public StudentEntity getProcessedObject(ResultSet resultSet) throws SQLException {
         StudentEntity student = new StudentEntity();
-        student.setFullName(resultSet.getString("Name"));
-        student.setGroupId(resultSet.getInt("GroupId"));
-        student.setFullName(resultSet.getString("Name"));
+        student.setId(resultSet.getInt("id"));
+        student.setFullName(resultSet.getString("name"));
+        student.setGroupId(resultSet.getInt("group_id"));
         return student;
     }
 }
