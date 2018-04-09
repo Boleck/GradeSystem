@@ -9,5 +9,5 @@ public interface IStudentDao {
     List<StudentEntity> getStudentsByGroupId(int groupId);
     StudentEntity getStudentById(int studentId);
     void deleteStudent(int studentId);
-    void updateStudent(StudentEntity student);
+    void addStudent(StudentEntity student);
 }
