@@ -2,6 +2,7 @@ package databases;
 
 
 import com.mysql.jdbc.Connection;
+import daoImpl.UserDao;
 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -53,6 +54,12 @@ public class ConnectionManager<T> {
         return getAll(sqlStatement, resultSetProcessor, new Object[] {});
     }
 
+    public T getFirst(String sqlStatement,
+                          ResultSetProcessor<T> resultSetProcessor, Object[] args) {
+        return getAll(sqlStatement + " LIMIT 1",resultSetProcessor,args).get(0);
+    }
+
+
     public List<T> getAll(String sqlStatement,
                           ResultSetProcessor<T> resultSetProcessor, Object[] args) {
 
@@ -97,4 +104,25 @@ public class ConnectionManager<T> {
     }
 
 
+    public int count(String sqlStatement, Object[] args) {
+        int count = 0;
+
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement)) {
+            for (int i = 0; i < args.length; i++) {
+                preparedStatement.setObject(i + 1, args[i]);
+            }
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    count = resultSet.getInt("COUNT(*)");
+                }
+            }
+
+        } catch (Exception e) {
+            //TODO: better logging
+            e.printStackTrace();
+        }
+
+        return count;
+    }
 }
