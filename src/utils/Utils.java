@@ -13,7 +13,7 @@ public class Utils {
     }
 
     public static String getLayoutFolder() {
-        return "layouts/";
+        return "/layouts/";
     }
 
 }
