@@ -53,12 +53,10 @@ public class LoginStageController {
                     }
                 } else {
                     errorText.setText(Strings.USER_NOT_EXIST);
-
                     // user not exist
                 }
             }else{
                 errorText.setText(Strings.PASSWORD_TOO_SHORT);
-
                 // password to short
             }
         }else{
