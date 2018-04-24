@@ -22,9 +22,33 @@ public class LoginStageController {
 
     public void loginButton(ActionEvent actionEvent) {
 
+
+
         UserDao userDao = new UserDao();
         String username = usernameField.getText();
         String pass = passwordField.getText();
+
+        //aby nie wpisywać hasła caly czas *******
+
+
+
+        Parent root2 = null;
+        try {
+            root2 = FXMLLoader.load(getClass().getResource(Utils.getLayoutFolder() + "hub_stage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage newStage2 = new Stage();
+        newStage2.setTitle("Hub Stage");
+        newStage2.setScene(new Scene(root2, 600, 400));
+        newStage2.show();
+        //close this stage
+        final Node source2 = (Node) actionEvent.getSource();
+        final Stage stage2 = (Stage) source2.getScene().getWindow();
+        stage2.close();
+
+        //*************
+
 
         if(username.length() > 5 ) {
             if(pass.length() > 5) {

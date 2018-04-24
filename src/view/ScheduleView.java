@@ -11,6 +11,7 @@ import java.util.List;
 
 public class ScheduleView{
     private final double day;
+    private final double duration;
     private  double offset;
     private double width;
     private double height;
@@ -24,6 +25,8 @@ public class ScheduleView{
         double days = width * 0.90;
         this.day = days / 5;
         this.canvas = canvas;
+        this.duration = height / 40;
+        //7:00 - 17:00 - 10h - 40 x 15 min
 
 
         //10% + 90%/5
@@ -52,7 +55,7 @@ public class ScheduleView{
     }
 
     public void addActivitySubject(ActivityEntity activity){
-        Shape shape = new Shape(activity.getDay()*day + offset,activity.getBeginHour()+0.60*activity.getBeginMinutes(),day,10);
+        Shape shape = new Shape(activity.getDay()*day + offset,(activity.getBeginHour()-7)*4*duration,day,(activity.getDuration()/15)*duration);
         shapes.add(shape);
         drawShape();
     }

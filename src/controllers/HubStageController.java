@@ -40,8 +40,21 @@ public class HubStageController {
         a.setSubjectId("asdqw");
         a.setTeacherId("3rqd");
 
+
+        ActivityEntity a2 = new ActivityEntity();
+        a2.setGroupId("7GGs332p");
+        a2.setBeginHour(16);
+        a2.setBeginMinutes(30);
+        a2.setDay(2);
+        a2.setDuration(45);
+        a2.setRoomId("e12Sd");
+        a2.setSubjectId("asdqw");
+        a2.setTeacherId("3rqd");
+
+
         ScheduleView sv = new ScheduleView(canvas.getWidth(),canvas.getHeight(),canvas);
         sv.addActivitySubject(a);
+        sv.addActivitySubject(a2);
 
 
 
