@@ -4,7 +4,8 @@ package models;
 public class ActivityEntity {
     String subjectId;
     int duration = 45;
-    int[] begin = {9,15};
+    int beginHour = 9;
+    int beginMinutes = 15;
     int day = 0; // mon,thu,...
     //DayModel day;
     String roomId;
@@ -27,12 +28,20 @@ public class ActivityEntity {
         this.duration = duration;
     }
 
-    public int[] getBegin() {
-        return begin;
+    public int getBeginHour() {
+        return beginHour;
     }
 
-    public void setBegin(int[] begin) {
-        this.begin = begin;
+    public void setBeginHour(int beginHour) {
+        this.beginHour = beginHour;
+    }
+
+    public int getBeginMinutes() {
+        return beginMinutes;
+    }
+
+    public void setBeginMinutes (int beginMinutes) {
+        this.beginMinutes = beginMinutes;
     }
 
     public int getDay() {
