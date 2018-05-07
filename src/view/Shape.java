@@ -1,5 +1,7 @@
 package view;
 
+import javafx.scene.canvas.Canvas;
+
 public class Shape {
     double x;
     double y;
@@ -27,5 +29,9 @@ public class Shape {
 
     public double getX() {
         return x;
+    }
+
+    public void draw(Canvas canvas) {
+        canvas.getGraphicsContext2D().fillRect(getX(),getY(),getWidth(),getHeight());
     }
 }

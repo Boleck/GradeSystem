@@ -47,15 +47,15 @@ public class ScheduleView{
     }
 
     private void drawShape() {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        //GraphicsContext gc = canvas.getGraphicsContext2D();
         for(int i = 0; i < shapes.size(); i++){
             Shape shape = shapes.get(i);
-            gc.fillRect(shape.getX(),shape.getY(),shape.getWidth(),shape.getHeight());
+            shape.draw(canvas);
         }
     }
 
     public void addActivitySubject(ActivityEntity activity){
-        Shape shape = new Shape(activity.getDay()*day + offset,(activity.getBeginHour()-7)*4*duration,day,(activity.getDuration()/15)*duration);
+        RectangleSubject shape = new RectangleSubject(activity.getDay()*day + offset,(activity.getBeginHour()-7)*4*duration,day,(activity.getDuration()/15)*duration);
         shapes.add(shape);
         drawShape();
     }
