@@ -1,6 +1,7 @@
 package view;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
 
 public class Shape {
     double x;

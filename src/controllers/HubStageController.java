@@ -26,8 +26,6 @@ public class HubStageController {
         anchorPane.getChildren().add(grid);
 
 
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.LIGHTCORAL);
         //gc.fillRect(75,75,100,100);
         //sample Subj
         ActivityEntity a = new ActivityEntity();
@@ -51,10 +49,16 @@ public class HubStageController {
         a2.setSubjectId("asdqw");
         a2.setTeacherId("3rqd");
 
+        ActivityEntity a3 = new ActivityEntity();
+        a3.setBeginHour(12);
+        a3.setBeginMinutes(0);
+        a3.setDay(1);
+        a3.setDuration(30);
 
         ScheduleView sv = new ScheduleView(canvas.getWidth(),canvas.getHeight(),canvas);
         sv.addActivitySubject(a);
         sv.addActivitySubject(a2);
+        sv.addActivitySubject(a3);
 
 
 

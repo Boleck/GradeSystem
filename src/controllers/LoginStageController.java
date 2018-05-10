@@ -40,7 +40,7 @@ public class LoginStageController {
         }
         Stage newStage2 = new Stage();
         newStage2.setTitle("Hub Stage");
-        newStage2.setScene(new Scene(root2, 600, 400));
+        newStage2.setScene(new Scene(root2, 800, 600));
         newStage2.show();
         //close this stage
         final Node source2 = (Node) actionEvent.getSource();
